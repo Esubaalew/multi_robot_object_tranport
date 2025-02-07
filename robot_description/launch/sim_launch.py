@@ -45,26 +45,29 @@ def generate_launch_description():
             output='screen'
         ),
 
-        # Spawn the car robot
+        # Spawn the car robot at a specific location
         Node(
             package='ros_gz_sim',
             executable='create',
             arguments=[
                 '-name', 'car_robot',
-                '-topic', 'robot_description',
-                '-file', car_sdf
+                '-file', car_sdf,
+                '-x', '-2', '-y', '0', '-z', '0.0',
+                '-Y', '0.0'  
             ],
             output='screen'
         ),
 
-        # Spawn the manipulator robot
+        # Spawn the manipulator robot at a specific location
         Node(
             package='ros_gz_sim',
             executable='create',
             arguments=[
                 '-name', 'manipulator_robot',
-                '-topic', 'robot_description',
-                '-file', manipulator_sdf
+                '-file', manipulator_sdf,
+                '-x', '-5', '-y', '0', '-z', '0.0',
+                # Facing towards the positive Y-axis (approximately 90 degrees)
+                '-Y', '1.57'
             ],
             output='screen'
         ),
