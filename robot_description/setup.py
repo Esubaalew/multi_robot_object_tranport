@@ -1,4 +1,6 @@
 from setuptools import find_packages, setup
+import os
+from glob import glob
 
 package_name = 'robot_description'
 
@@ -10,6 +12,12 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/launch',
+         glob('launch/*.py')),  # Install launch files
+        ('share/' + package_name + '/urdf',
+         glob('urdf/*.xacro')),  # Install URDF files
+        ('share/' + package_name + '/worlds',
+         glob('worlds/*.world')),  # Install world files
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -19,7 +27,6 @@ setup(
     license='MIT',
     tests_require=['pytest'],
     entry_points={
-        'console_scripts': [
-        ],
+        'console_scripts': [],
     },
 )

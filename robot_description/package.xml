@@ -7,8 +7,17 @@
   <maintainer email="esubalewchekol6@gmail.com">esube</maintainer>
   <license>MIT</license>
 
+  <!-- Dependencies -->
   <depend>rclpy</depend>
+<depend>ros_gz_sim</depend>
+  <depend>launch</depend>
+  <depend>launch_ros</depend>
 
+  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>ros2run</exec_depend>
+  
+
+  <!-- Test dependencies -->
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>
