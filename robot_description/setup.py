@@ -12,12 +12,15 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch',
-         glob('launch/*.py')),  # Install launch files
-        ('share/' + package_name + '/urdf',
-         glob('urdf/*.xacro')),  # Install URDF files
-        ('share/' + package_name + '/worlds',
-         glob('worlds/*.world')),  # Install world files
+
+        # Install launch files
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
+
+        # Install SDF files
+        (os.path.join('share', package_name, 'sdf'), glob('sdf/*.sdf')),
+
+        # Install world files
+        (os.path.join('share', package_name, 'worlds'), glob('worlds/*.world')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
