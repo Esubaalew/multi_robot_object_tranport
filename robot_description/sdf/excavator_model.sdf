@@ -1,0 +1,195 @@
+<sdf version="1.6">
+  <model name="excavator">
+    <!-- Links -->
+    <link name="base">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/base.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/base.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>100</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <iyy>1</iyy>
+          <izz>1</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+    </link>
+    <link name="body">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/body.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/body.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>50</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <iyy>1</iyy>
+          <izz>1</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+    </link>
+    <link name="arm1">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/arm1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/arm1.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>20</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <iyy>1</iyy>
+          <izz>1</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+    </link>
+    <link name="arm2">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/arm2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/arm2.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>10</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <iyy>1</iyy>
+          <izz>1</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+    </link>
+    <link name="shovel">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/shovel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/shovel.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>5</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <iyy>1</iyy>
+          <izz>1</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+    </link>
+    <!-- Joints -->
+    <joint name="odom" type="fixed">
+      <parent>world</parent>
+      <child>base</child>
+    </joint>
+    <joint name="body_rotation" type="continuous">
+      <parent>base</parent>
+      <child>body</child>
+      <pose>0 0 0.6 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <joint name="arm1_rotation" type="revolute">
+      <parent>body</parent>
+      <child>arm1</child>
+      <pose>0.933 -0.134 0.302 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+      <limit>
+        <lower>-1.308</lower>
+        <upper>-0.087</upper>
+        <effort>1000.0</effort>
+        <velocity>0.5</velocity>
+      </limit>
+    </joint>
+    <joint name="arm2_rotation" type="revolute">
+      <parent>arm1</parent>
+      <child>arm2</child>
+      <pose>2.586 0 -0.625 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+      <limit>
+        <lower>-2.428</lower>
+        <upper>-0.085</upper>
+        <effort>1000.0</effort>
+        <velocity>0.5</velocity>
+      </limit>
+    </joint>
+    <joint name="shovel_rotation" type="revolute">
+      <parent>arm2</parent>
+      <child>shovel</child>
+      <pose>-1.362 0 -0.154 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+      <limit>
+        <lower>-2.395</lower>
+        <upper>-0.357</upper>
+        <effort>1000.0</effort>
+        <velocity>0.5</velocity>
+      </limit>
+    </joint>
+  </model>
+</sdf>
