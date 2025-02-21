@@ -5,14 +5,14 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/base.dae</uri>
+            <uri>meshes/base.dae</uri>
           </mesh>
         </geometry>
       </visual>
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/base.dae</uri>
+            <uri>meshes/base.dae</uri>
           </mesh>
         </geometry>
       </collision>
@@ -32,14 +32,14 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/body.dae</uri>
+            <uri>meshes/body.dae</uri>
           </mesh>
         </geometry>
       </visual>
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/body.dae</uri>
+            <uri>meshes/body.dae</uri>
           </mesh>
         </geometry>
       </collision>
@@ -59,14 +59,14 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/arm1.dae</uri>
+            <uri>meshes/arm1.dae</uri>
           </mesh>
         </geometry>
       </visual>
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/arm1.dae</uri>
+            <uri>meshes/arm1.dae</uri>
           </mesh>
         </geometry>
       </collision>
@@ -86,14 +86,14 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/arm2.dae</uri>
+            <uri>meshes/arm2.dae</uri>
           </mesh>
         </geometry>
       </visual>
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/arm2.dae</uri>
+            <uri>meshes/arm2.dae</uri>
           </mesh>
         </geometry>
       </collision>
@@ -113,14 +113,14 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/shovel.dae</uri>
+            <uri>meshes/shovel.dae</uri>
           </mesh>
         </geometry>
       </visual>
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>file:////home/tensu/ros2_ws/src/robot_description/sdf/meshes/shovel.dae</uri>
+            <uri>meshes/shovel.dae</uri>
           </mesh>
         </geometry>
       </collision>

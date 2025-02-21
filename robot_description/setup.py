@@ -21,6 +21,9 @@ setup(
 
         # Install world files
         (os.path.join('share', package_name, 'worlds'), glob('worlds/*.world')),
+
+        # Install mesh files
+        (os.path.join('share', package_name, 'sdf', 'meshes'), glob('sdf/meshes/*.dae')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
