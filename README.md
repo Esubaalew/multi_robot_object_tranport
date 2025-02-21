@@ -1,5 +1,14 @@
 # Multi-Robot Object Transportation and Coordination with ROS 2
 
+## WARNING
+
+In ordeder to load  the meshes safely you need to do the ff:
+being in your workspace folder  run the ff
+```bash
+export GAZEBO_MODEL_PATH=$(pwd)/src/robot_description/sdf:$GAZEBO_MODEL_PATH
+
+```
+
 ## Objective
 
 This project aims to demonstrate cooperative object transportation using two small, differentially driven robots in a simplified scenario. The robots will collaboratively push a lightweight object to a designated goal location, incorporating sensation (e.g., object and obstacle detection) and actuation (e.g., path planning and movement).
