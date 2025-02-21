@@ -1,13 +1,15 @@
 # Multi-Robot Object Transportation and Coordination with ROS 2
 
-## WARNING
+## ⚠ WARNING
 
-In ordeder to load  the meshes safely you need to do the ff:
-being in your workspace folder  run the ff
+To load the meshes safely, follow these steps:
+
+1. Navigate to your workspace folder.
+2. Run the following command:
+
 ```bash
 export GAZEBO_MODEL_PATH=$(pwd)/src/robot_description/sdf:$GAZEBO_MODEL_PATH
 
-```
 
 ## Objective
 
@@ -54,3 +56,4 @@ This project aims to demonstrate cooperative object transportation using two sma
 
 6. **Testing and Refinement**:
    Test the system with a lightweight object in a controlled environment. Fine-tune control and path-planning parameters to achieve smooth and efficient object transportation.
+```
