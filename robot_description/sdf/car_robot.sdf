@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
-  <model name="truck_robot">
+  <model name="car_robot">
     <static>false</static>
 
     <!-- Base Link - Truck Chassis -->
@@ -184,7 +184,7 @@
     <!-- Wheels -->
     <!-- Front Left Wheel -->
     <link name="wheel_fl">
-      <pose>1.25 0.8 0.3 0 1.5707 1.5707</pose>
+      <pose>1.25 0.8 0.3 0 1.5707 0</pose> <!-- Fixed: 90° around Y -->
       <inertial>
         <mass>20.0</mass>
         <inertia>
@@ -230,7 +230,7 @@
 
     <!-- Front Right Wheel -->
     <link name="wheel_fr">
-      <pose>1.25 -0.8 0.3 0 1.5707 1.5707</pose>
+      <pose>1.25 -0.8 0.3 0 1.5707 0</pose> <!-- Fixed: 90° around Y -->
       <inertial>
         <mass>20.0</mass>
         <inertia>
@@ -276,7 +276,7 @@
 
     <!-- Rear Left Wheel -->
     <link name="wheel_rl">
-      <pose>-1.25 0.8 0.3 0 1.5707 1.5707</pose>
+      <pose>-1.25 0.8 0.3 0 1.5707 0</pose> <!-- Fixed: 90° around Y -->
       <inertial>
         <mass>20.0</mass>
         <inertia>
@@ -322,7 +322,7 @@
 
     <!-- Rear Right Wheel -->
     <link name="wheel_rr">
-      <pose>-1.25 -0.8 0.3 0 1.5707 1.5707</pose>
+      <pose>-1.25 -0.8 0.3 0 1.5707 0</pose> <!-- Fixed: 90° around Y -->
       <inertial>
         <mass>20.0</mass>
         <inertia>
@@ -371,7 +371,7 @@
       <parent>base_link</parent>
       <child>wheel_fl</child>
       <axis>
-        <xyz>0 1 0</xyz>
+        <xyz>1 0 0</xyz> <!-- Fixed: Rotate around X-axis -->
         <limit>
           <effort>1000</effort>
         </limit>
@@ -386,7 +386,7 @@
       <parent>base_link</parent>
       <child>wheel_fr</child>
       <axis>
-        <xyz>0 1 0</xyz>
+        <xyz>1 0 0</xyz> <!-- Fixed: Rotate around X-axis -->
         <limit>
           <effort>1000</effort>
         </limit>
@@ -401,7 +401,7 @@
       <parent>base_link</parent>
       <child>wheel_rl</child>
       <axis>
-        <xyz>0 1 0</xyz>
+        <xyz>1 0 0</xyz> <!-- Fixed: Rotate around X-axis -->
         <limit>
           <effort>1000</effort>
         </limit>
@@ -416,7 +416,7 @@
       <parent>base_link</parent>
       <child>wheel_rr</child>
       <axis>
-        <xyz>0 1 0</xyz>
+        <xyz>1 0 0</xyz> <!-- Fixed: Rotate around X-axis -->
         <limit>
           <effort>1000</effort>
         </limit>
@@ -426,6 +426,18 @@
         </dynamics>
       </axis>
     </joint>
+
+    <!-- Differential Drive Plugin -->
+    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+      <left_joint>joint_wheel_fr</left_joint> <!-- Fixed: Swapped left/right -->
+      <left_joint>joint_wheel_rr</left_joint> <!-- Fixed: Swapped left/right -->
+      <right_joint>joint_wheel_fl</right_joint> <!-- Fixed: Swapped left/right -->
+      <right_joint>joint_wheel_rl</right_joint> <!-- Fixed: Swapped left/right -->
+      <wheel_separation>1.6</wheel_separation>
+      <wheel_radius>0.3</wheel_radius>
+      <odom_publish_frequency>10</odom_publish_frequency>
+      <topic>/car_robot/cmd_vel</topic>
+    </plugin>
 
   </model>
 </sdf>
