@@ -34,8 +34,7 @@ def generate_launch_description():
             arguments=[
                 '/car_robot/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
                 '/excavator/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
-                '/excavator/camera/image_raw@sensor_msgs/msg/Image@gz.msgs.Image',  # Bridge image data
-                # Bridge camera info
+                '/excavator/camera/image_raw@sensor_msgs/msg/Image@gz.msgs.Image',
                 '/excavator/camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo'
             ],
             output='screen',
@@ -44,20 +43,21 @@ def generate_launch_description():
                              '/car_robot/cmd_vel': {'reliability': 'reliable'},
                              '/excavator/cmd_vel': {'reliability': 'reliable'}
                          }}]
-
         ),
+        # Position the car robot at (-2, -2) facing positive x (yaw=0)
         Node(
             package='ros_gz_sim',
             executable='create',
             arguments=['-name', 'car_robot', '-file', truck_sdf,
-                       '-x', '-2', '-y', '0', '-z', '0.0', '-Y', '0.0'],
+                       '-x', '-2', '-y', '-2', '-z', '0.0', '-Y', '0.0'],
             output='screen'
         ),
+        # Position the excavator at (-2, 0) facing positive x (yaw=0)
         Node(
             package='ros_gz_sim',
             executable='create',
             arguments=['-name', 'excavator', '-file', excavator_sdf,
-                       '-x', '-5', '-y', '0', '-z', '0.0', '-Y', '1.57'],
+                       '-x', '-2', '-y', '0', '-z', '0.0', '-Y', '0.0'],
             output='screen'
         ),
         Node(
