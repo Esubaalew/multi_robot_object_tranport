@@ -33,6 +33,10 @@ setup(
     license='MIT',
     tests_require=['pytest'],
     entry_points={
-        'console_scripts': [],
+        'console_scripts': [
+            'object_detector = robot_description.object_detector:main',
+            'car_controller = robot_description.car_acontroller:main',
+        ],
+
     },
 )

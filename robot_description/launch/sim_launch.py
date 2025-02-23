@@ -21,8 +21,6 @@ def generate_launch_description():
     return LaunchDescription([
         SetEnvironmentVariable('GZ_SIM_RESOURCE_PATH', PathJoinSubstitution(
             [example_pkg_path, 'models'])),
-        SetEnvironmentVariable('GZ_SIM_PLUGIN_PATH', PathJoinSubstitution(
-            [example_pkg_path, 'plugins'])),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(gz_launch_path),
             launch_arguments={
@@ -35,7 +33,10 @@ def generate_launch_description():
             executable='parameter_bridge',
             arguments=[
                 '/car_robot/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
-                '/excavator/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'
+                '/excavator/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
+                '/excavator/camera/image_raw@sensor_msgs/msg/Image@gz.msgs.Image',  # Bridge image data
+                # Bridge camera info
+                '/excavator/camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo'
             ],
             output='screen',
             parameters=[{'verbose': True,
@@ -59,4 +60,9 @@ def generate_launch_description():
                        '-x', '-5', '-y', '0', '-z', '0.0', '-Y', '1.57'],
             output='screen'
         ),
+        Node(
+            package='robot_description',
+            executable='object_detector',
+            output='screen'
+        )
     ])
