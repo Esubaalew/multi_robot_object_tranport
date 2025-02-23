@@ -9,6 +9,7 @@ To load the meshes safely, follow these steps:
 
 ```bash
 export GAZEBO_MODEL_PATH=$(pwd)/src/robot_description/sdf:$GAZEBO_MODEL_PATH
+```
 
 
 ## Objective
